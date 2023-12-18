@@ -1,5 +1,8 @@
 package com.example.palace_resorts.di
 
+import com.example.palace_resorts.flows.dao.NewsDao
+import com.example.palace_resorts.flows.repository.NewsRepository
+import com.example.palace_resorts.flows.repository.NewsRepositoryImpl
 import com.example.palace_resorts.network.ApiClient
 import dagger.Module
 import dagger.Provides
@@ -43,4 +46,11 @@ object NetworkModule {
     fun provideApiClient(retrofit: Retrofit): ApiClient {
         return retrofit.create(ApiClient::class.java)
     }
+
+    @Provides
+    fun provideNewsRepository(
+        newsDao: NewsDao,
+        apiClient: ApiClient
+    ): NewsRepository =
+        NewsRepositoryImpl(newsDao, apiClient)
 }

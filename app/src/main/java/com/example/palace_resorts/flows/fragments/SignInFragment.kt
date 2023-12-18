@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.palace_resorts.base.FragmentView
 import com.example.palace_resorts.databinding.FragmentSigninBinding
 import com.example.palace_resorts.utils.email.EmailUtils

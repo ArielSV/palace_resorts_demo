@@ -6,10 +6,15 @@ import androidx.navigation.findNavController
 import com.example.palace_resorts.R
 import com.example.palace_resorts.base.NavigationActivity
 import com.example.palace_resorts.databinding.ActivityMainBinding
+import com.example.palace_resorts.flows.fragments.HomeFragment
 import com.example.palace_resorts.flows.fragments.SignInFragment
 import com.example.palace_resorts.flows.fragments.SignInFragmentDirections
+import com.example.palace_resorts.utils.extensionUtils.show
+import dagger.hilt.android.AndroidEntryPoint
 
-class SignInActivity : NavigationActivity(), SignInFragment.SignInFragmentListener {
+@AndroidEntryPoint
+class SignInActivity : NavigationActivity(), SignInFragment.SignInFragmentListener,
+    HomeFragment.HomeFragmentListener {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -29,5 +34,9 @@ class SignInActivity : NavigationActivity(), SignInFragment.SignInFragmentListen
         currentNavController().navigate(
             SignInFragmentDirections.actionToHomeFragment()
         )
+    }
+
+    override fun showToolBar() {
+        binding.toolbar.show()
     }
 }

@@ -4,6 +4,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
+    id("kotlin-kapt")
     kotlin("kapt")
 }
 
@@ -76,6 +77,11 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.4.2")
     implementation("androidx.room:room-ktx:2.4.2")
+    kapt ("androidx.room:room-compiler:2.5.0-alpha03")
+
+    //Rx
+    implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation ("io.reactivex.rxjava3:rxjava:3.0.7")
 
     //Groupie
     implementation("com.github.lisawray.groupie:groupie:2.10.1")

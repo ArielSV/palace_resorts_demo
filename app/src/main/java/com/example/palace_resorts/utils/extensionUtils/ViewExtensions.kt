@@ -14,3 +14,11 @@ fun View.removeFromParent() {
 fun CharSequence?.isNotNullOrBlank(): Boolean {
     return this.isNullOrBlank().not()
 }
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
