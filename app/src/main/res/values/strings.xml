@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ExclusiveNews</string>
+    <string name="loading_copy">Loading…</string>
 </resources>
