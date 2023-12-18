@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -30,6 +32,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -38,6 +45,36 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
+
+    //dagger hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation ("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+
+    // Room
+    implementation ("androidx.room:room-runtime:2.4.2")
+    implementation ("androidx.room:room-ktx:2.4.2")
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
