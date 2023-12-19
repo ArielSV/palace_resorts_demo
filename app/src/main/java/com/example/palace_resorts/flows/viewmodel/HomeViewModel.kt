@@ -1,7 +1,7 @@
 package com.example.palace_resorts.flows.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import com.example.palace_resorts.base.SingleLiveEvent
 import com.example.palace_resorts.base.viewmodel.BaseViewModel
 import com.example.palace_resorts.flows.states.NewsActions
 import com.example.palace_resorts.flows.usecase.GetNewsUseCase
@@ -10,10 +10,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val newsUseCase: GetNewsUseCase,
+    private val newsUseCase: GetNewsUseCase
 ) : BaseViewModel() {
 
-    private val action = MutableLiveData<NewsActions>()
+    private val action = SingleLiveEvent<NewsActions>()
     fun getAction(): LiveData<NewsActions> = action
 
     fun getNews() {
@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
                 }
                 .subscribe(
                     {
-                    action.value = NewsActions.OnSuccess(it)
+                        action.value = NewsActions.OnSuccess(it)
                     },
                     {
                         showMessageText.value = it.message.orEmpty()

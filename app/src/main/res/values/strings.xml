@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ExclusiveNews</string>
     <string name="loading_copy">Loading…</string>
+    <string name="favorites_message">Agregado a favoritos</string>
 </resources>

@@ -23,6 +23,42 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <action
+            android:id="@+id/action_to_news_detail_fragment"
+            app:destination="@id/news_detail_fragment" />
+
+        <action
+            android:id="@+id/action_to_favorites_fragment"
+            app:destination="@id/favorites_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/news_detail_fragment"
+        android:name="com.example.palace_resorts.flows.fragments.NewsDetailFragment"
+        android:label="NewsDetailFragment"
+        tools:layout="@layout/fragment_news_detail" >
+
+        <argument
+            android:name="isFromRemote"
+            app:argType="boolean" />
+
+        <argument
+            android:name="uiModel"
+            app:argType="com.example.palace_resorts.flows.models.Articles" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorites_fragment"
+        android:name="com.example.palace_resorts.flows.fragments.FavoritesFragment"
+        android:label="FavoritesFragment"
+        tools:layout="@layout/fragment_favorites" >
+
+        <action
+            android:id="@+id/action_to_favorites_detail_fragment"
+            app:destination="@id/news_detail_fragment" />
+
     </fragment>
 
 </navigation>

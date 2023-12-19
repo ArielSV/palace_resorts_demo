@@ -46,6 +46,8 @@ class HomeFragment : FragmentView() {
                 setupRecyclerView()
                 showNews(action.newsList)
             }
+
+            else -> Unit
         }
     }
 
@@ -57,7 +59,8 @@ class HomeFragment : FragmentView() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listener?.showToolBar()
+        listener?.hideToolbar()
+        setupClickListener()
         bindViewModel()
         searchCustomer()
     }
@@ -71,19 +74,10 @@ class HomeFragment : FragmentView() {
         }
     }
 
-    private fun showNews(newsList: NewsResponse) {
-        groupAdapter.clear()
-        groupAdapter.addAll(
-            newsList.articlesList.mapIndexed { index, item ->
-                createItem(item, index + 1)
-            }
-        )
-    }
-
-    private fun createItem(article: Articles?, index: Int): NewsItemView {
-        return NewsItemView(article, index) {
+    private fun createItem(article: Articles?): NewsItemView {
+        return NewsItemView(article) {
             it.let {
-
+                listener?.navigateToDetail(it)
             }
         }
     }
@@ -100,33 +94,49 @@ class HomeFragment : FragmentView() {
         binding.apply {
             editTextSearch.addTextChangedListener { text ->
                 if (text.toString().length == 4) {
-                    groupAdapter.clear()
-                    articles?.let { article ->
-                        val searchList: List<Articles> = article.articlesList.filter {
-                            text.toString().lowercase().contains(it.author.toString().take(4).lowercase())
-                        }
-                        if (searchList.isNotEmpty()) {
-                            recyclerView.show()
-                            groupAdapter.addAll(
-                                searchList.mapIndexed { index, item ->
-                                    createItem(item, index)
-                                }
-                            )
-                        } else {
-                            recyclerView.hide()
-                            textViewError.show()
-                        }
-                    }
+                    performSearch(text.toString())
                 } else {
-                    articles?.let { news ->
-                        showNews(news)
-                    }
+                    articles?.let { showNews(it) }
                 }
             }
         }
     }
 
+    private fun performSearch(query: String) {
+        binding.apply {
+            articles?.let { article ->
+                val searchList = article.articlesList.filter {
+                    query.lowercase()
+                        .contains(it.author?.take(4)?.lowercase() ?: "")
+                }
+
+                if (searchList.isNotEmpty()) {
+                    recyclerView.show()
+                    groupAdapter.addAll(searchList.map { createItem(it) })
+                } else {
+                    recyclerView.hide()
+                    textViewError.show()
+                }
+            }
+        }
+    }
+
+    private fun showNews(news: NewsResponse) {
+        binding.apply {
+            recyclerView.show()
+            textViewError.hide()
+            groupAdapter.clear()
+            groupAdapter.addAll(news.articlesList.map { createItem(it) })
+        }
+    }
+
+    private fun setupClickListener() {
+        binding.imageViewRightAction.setOnClickListener { listener?.navigateToFavorites() }
+    }
+
     interface HomeFragmentListener {
-        fun showToolBar()
+        fun hideToolbar()
+        fun navigateToDetail(article: Articles)
+        fun navigateToFavorites()
     }
 }

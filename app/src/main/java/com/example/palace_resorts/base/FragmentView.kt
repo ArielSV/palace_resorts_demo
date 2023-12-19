@@ -39,5 +39,7 @@ abstract class FragmentView : Fragment(), AndroidProvider {
         baseActivity.showLoading(show)
     }
 
-    open fun onBackPressed() = Unit
+    open fun onBackPressed() {
+        baseActivity.onBackPressed()
+    }
 }

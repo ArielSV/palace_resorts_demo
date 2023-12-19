@@ -7,7 +7,7 @@ import com.example.palace_resorts.base.converters.NewsTypeConverters
 import com.example.palace_resorts.flows.dao.NewsDao
 
 @Database(
-    entities = [EntityNewsItem::class], version = 1, exportSchema = false
+    entities = [EntityNewsItem::class], version = 2, exportSchema = false
 )
 @TypeConverters(NewsTypeConverters::class)
 abstract class NewsDatabase : RoomDatabase() {
