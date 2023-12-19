@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/spacing_16"
     tools:context=".flows.activities.SignInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:padding="16dp"
+        android:layout_marginHorizontal="@dimen/spacing_16"
+        android:layout_marginTop="@dimen/spacing_16"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,12 +27,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView3"
+            android:id="@+id/textView_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="titulo"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="@dimen/text_size_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView_right_action"
             app:layout_constraintStart_toEndOf="@+id/imageView_back"
@@ -40,7 +41,6 @@
             android:id="@+id/imageView_right_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

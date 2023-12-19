@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.palace_resorts.R
 import com.example.palace_resorts.base.FragmentView
 import com.example.palace_resorts.databinding.FragmentSigninBinding
 import com.example.palace_resorts.utils.email.EmailUtils
@@ -36,14 +37,14 @@ class SignInFragment : FragmentView() {
                 if (isEmailValid) {
                     inputLayoutEmail.error = ""
                 } else {
-                    inputLayoutEmail.error = "Correo no válido, intenta de nuevo"
+                    inputLayoutEmail.error = getString(R.string.invalid_email)
                 }
 
                 val isPasswordValid = EmailUtils.validatePassword(editTextPassword.text.toString())
                 if (isPasswordValid) {
                     inputLayoutPassword.error = ""
                 } else {
-                    inputLayoutPassword.error = "Contraseña no válida, intenta de nuevo"
+                    inputLayoutPassword.error = getString(R.string.invalid_password)
                 }
 
                 if (isEmailValid && isPasswordValid) {

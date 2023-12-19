@@ -6,6 +6,7 @@ import com.example.palace_resorts.flows.models.NewsResponse
 sealed interface NewsActions {
     data object OnDeleteSuccess : NewsActions
     data object OnAddedSuccess : NewsActions
+    data object ShowEmptyFavorites : NewsActions
     data class OnSuccess(val newsList: NewsResponse) : NewsActions
     data class GetAllNews(val newsList: List<EntityNewsItem?>) : NewsActions
 }

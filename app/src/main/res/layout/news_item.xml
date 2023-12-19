@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_marginTop="@dimen/spacing_16"
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/imageview_icon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/circle_count_size"
+        android:layout_height="@dimen/circle_count_size"
         android:background="@drawable/bg_circle"
         android:gravity="center"
         android:textColor="@color/white"
@@ -21,10 +21,10 @@
         android:id="@+id/textView_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/spacing_16"
+        android:layout_marginEnd="@dimen/spacing_8"
         android:textColor="@color/purple"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView_date"
         app:layout_constraintStart_toEndOf="@+id/imageview_icon"
@@ -33,8 +33,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_new"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/detail_image_size"
+        android:layout_height="@dimen/detail_image_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,8 +43,8 @@
         android:id="@+id/textView_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="@dimen/spacing_16"
+        android:layout_marginEnd="@dimen/spacing_16"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView_new"
@@ -55,8 +55,8 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_date"
         android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_16"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView_new"
         app:layout_constraintStart_toStartOf="parent"

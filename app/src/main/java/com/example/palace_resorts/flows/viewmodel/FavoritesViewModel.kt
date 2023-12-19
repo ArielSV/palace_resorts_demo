@@ -24,9 +24,11 @@ class FavoritesViewModel @Inject constructor(
             val news =  useCase.getAllNews()
             news.let {
                 if (news.isNotEmpty()) {
-                    showProgress.postValue(false)
                     action.postValue(NewsActions.GetAllNews(it))
+                } else {
+                    action.postValue(NewsActions.ShowEmptyFavorites)
                 }
+                showProgress.postValue(false)
             }
         }
     }

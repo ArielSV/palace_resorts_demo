@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/spacing_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:padding="16dp"
-        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="@dimen/text_size_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView_right_action"
             app:layout_constraintStart_toEndOf="@+id/imageView_back"
@@ -38,7 +36,6 @@
             android:id="@+id/imageView_right_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +45,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_icon"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/image_detail_size"
+        android:layout_marginTop="@dimen/spacing_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -58,7 +55,7 @@
         android:id="@+id/textView_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/spacing_16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
 
@@ -66,8 +63,8 @@
         android:id="@+id/textView_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/spacing_24"
+        android:layout_marginTop="@dimen/spacing_16"
         app:layout_constraintStart_toEndOf="@+id/textView_date"
         app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
 
@@ -75,7 +72,7 @@
         android:id="@+id/textView_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/spacing_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

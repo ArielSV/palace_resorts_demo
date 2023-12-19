@@ -2,4 +2,15 @@
     <string name="app_name">ExclusiveNews</string>
     <string name="loading_copy">Loading…</string>
     <string name="favorites_message">Agregado a favoritos</string>
+    <string name="exclusive_news">Exclusive News</string>
+    <string name="favorites_title">Favoritos</string>
+    <string name="invalid_email">Correo no válido, intenta de nuevo</string>
+    <string name="invalid_password">Contraseña no válida, intenta de nuevo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="subtitle">Hi there! Nice to see you again</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="search_customers">Search customers</string>
+    <string name="customer_not_found">No se encontro resultado</string>
+    <string name="no_favorites_title">No tienes favoritos guardados</string>
 </resources>

@@ -16,6 +16,7 @@ import com.example.palace_resorts.flows.states.NewsActions
 import com.example.palace_resorts.flows.viewmodel.HomeViewModel
 import com.example.palace_resorts.flows.views.NewsItemView
 import com.example.palace_resorts.utils.extensionUtils.hide
+import com.example.palace_resorts.utils.extensionUtils.orFalse
 import com.example.palace_resorts.utils.extensionUtils.show
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -93,10 +94,12 @@ class HomeFragment : FragmentView() {
     private fun searchCustomer() {
         binding.apply {
             editTextSearch.addTextChangedListener { text ->
-                if (text.toString().length == 4) {
+                if (text.toString().length >= 4) {
                     performSearch(text.toString())
                 } else {
-                    articles?.let { showNews(it) }
+                    articles?.let {
+                        showNews(it)
+                    }
                 }
             }
         }
@@ -106,13 +109,17 @@ class HomeFragment : FragmentView() {
         binding.apply {
             articles?.let { article ->
                 val searchList = article.articlesList.filter {
-                    query.lowercase()
-                        .contains(it.author?.take(4)?.lowercase() ?: "")
+                    it.author?.take(query.length)?.lowercase()
+                        ?.contains(query.lowercase()).orFalse()
                 }
 
                 if (searchList.isNotEmpty()) {
                     recyclerView.show()
-                    groupAdapter.addAll(searchList.map { createItem(it) })
+                    textViewError.hide()
+                    groupAdapter.apply {
+                        clear()
+                        addAll(searchList.map { createItem(it) })
+                    }
                 } else {
                     recyclerView.hide()
                     textViewError.show()
@@ -125,8 +132,10 @@ class HomeFragment : FragmentView() {
         binding.apply {
             recyclerView.show()
             textViewError.hide()
-            groupAdapter.clear()
-            groupAdapter.addAll(news.articlesList.map { createItem(it) })
+            groupAdapter.apply {
+                clear()
+                addAll(news.articlesList.map { createItem(it) })
+            }
         }
     }
 

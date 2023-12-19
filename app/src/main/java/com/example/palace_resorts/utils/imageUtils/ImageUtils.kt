@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.example.palace_resorts.R
 
 fun loadImages(context: Context, urlImage: String, container: ImageView) {
     val circularProgressDrawable = CircularProgressDrawable(context)
@@ -14,6 +15,7 @@ fun loadImages(context: Context, urlImage: String, container: ImageView) {
         .with(context)
         .load(urlImage)
         .centerCrop()
+        .error(R.mipmap.image_placeholder)
         .placeholder(circularProgressDrawable)
         .into(container)
 }

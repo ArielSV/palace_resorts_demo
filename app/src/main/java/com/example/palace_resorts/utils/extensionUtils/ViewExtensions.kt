@@ -11,6 +11,8 @@ fun View.removeFromParent() {
 
 fun Int?.orZero(): Int = this ?: 0
 
+fun Boolean?.orFalse() = this ?: false
+
 fun View.show() {
     this.visibility = View.VISIBLE
 }

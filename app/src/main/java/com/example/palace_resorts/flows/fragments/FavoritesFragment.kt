@@ -13,7 +13,9 @@ import com.example.palace_resorts.flows.models.Articles
 import com.example.palace_resorts.flows.states.NewsActions
 import com.example.palace_resorts.flows.viewmodel.FavoritesViewModel
 import com.example.palace_resorts.flows.views.NewsItemView
+import com.example.palace_resorts.utils.extensionUtils.hide
 import com.example.palace_resorts.utils.extensionUtils.orZero
+import com.example.palace_resorts.utils.extensionUtils.show
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 
@@ -65,21 +67,28 @@ class FavoritesFragment : FragmentView() {
     }
 
     private fun handleAction(action: NewsActions) {
-        if (action is NewsActions.GetAllNews) {
-            val news = mutableListOf<Articles>()
-            action.newsList.map {
-                news.add(
-                    Articles(
-                        it?.id.orZero(),
-                        it?.author.orEmpty(),
-                        it?.title.orEmpty(),
-                        it?.urlToImage.orEmpty(),
-                        it?.publishedAt.orEmpty(),
-                        it?.content.orEmpty()
+        binding.apply {
+            if (action is NewsActions.GetAllNews) {
+                textViewError.hide()
+                recyclerView.show()
+                val news = mutableListOf<Articles>()
+                action.newsList.map {
+                    news.add(
+                        Articles(
+                            it?.id.orZero(),
+                            it?.author.orEmpty(),
+                            it?.title.orEmpty(),
+                            it?.urlToImage.orEmpty(),
+                            it?.publishedAt.orEmpty(),
+                            it?.content.orEmpty()
+                        )
                     )
-                )
+                }
+                showNews(news)
+            } else if (action is NewsActions.ShowEmptyFavorites) {
+                recyclerView.hide()
+                textViewError.show()
             }
-            showNews(news)
         }
     }
 

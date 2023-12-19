@@ -55,7 +55,11 @@ class SignInActivity : NavigationActivity(), SignInFragment.SignInFragmentListen
     }
 
     override fun showToolBar() {
-        binding.toolbar.show()
+        binding.apply {
+            toolbar.show()
+            textViewTitle.text = getString(R.string.favorites_title)
+        }
+
     }
 
     override fun navigateToFavoriteDetail(article: Articles) {
