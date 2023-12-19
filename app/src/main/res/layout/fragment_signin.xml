@@ -62,7 +62,6 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="abc@gmail.com"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:maxLines="1" />
@@ -85,7 +84,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:text="password123"
             android:inputType="textPassword"
             android:maxLines="1" />
 

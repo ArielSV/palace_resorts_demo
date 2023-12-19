@@ -140,7 +140,10 @@ class HomeFragment : FragmentView() {
     }
 
     private fun setupClickListener() {
-        binding.imageViewRightAction.setOnClickListener { listener?.navigateToFavorites() }
+        binding.apply {
+            imageViewBack.setOnClickListener { onBackPressed() }
+            imageViewRightAction.setOnClickListener { listener?.navigateToFavorites() }
+        }
     }
 
     interface HomeFragmentListener {
